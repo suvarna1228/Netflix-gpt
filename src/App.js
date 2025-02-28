@@ -1,12 +1,8 @@
-
-import './App.css';
+import Body from './components/Body';
+import './App.js';
 
 function App() {
-  return (
-    <div className="App font-bold text-3xl">
-      namestey
-    </div>
-  );
-};
+  return <Body/>;
+}
 
 export default App;
