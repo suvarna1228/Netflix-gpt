@@ -73,7 +73,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 -created react app
 -configure tailwindcss
-
+-header
+-login form
+-sign up form
 
 
 #features
@@ -89,3 +91,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -netflixgpt
    -search bar
    -movie suggetion
+
+
+
+for big form use librery formic
