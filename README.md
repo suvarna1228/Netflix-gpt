@@ -78,6 +78,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -sign up form
 -form validation
 -useref hook
+-Firebase setup
+-deeploying our app to production
+-impliment sign in user api
+-created redux storee with userslice
 
 
 
