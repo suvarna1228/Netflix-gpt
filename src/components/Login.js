@@ -6,7 +6,7 @@ import { auth } from '../utils/firebase';
 
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { USER_AVATAR } from '../utils/constants';
+import { BG_URL, USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm,setIsSignInForm] = useState(true);
@@ -91,7 +91,7 @@ const Login = () => {
     <div className="absolute inset-0">
     <img 
     className="w-full h-full object-cover"
-    src="https://assets.nflxext.com/ffe/siteui/vlv3/04ef06cc-5f81-4a8e-8db0-6430ba4af286/web/IN-en-20250224-TRIFECTA-perspective_3a9c67b5-1d1d-49be-8499-d179f6389935_small.jpg" alt='bg'/>
+    src={BG_URL} alt='bg'/>
     </div>
   
     <form onSubmit={(e)=>e.preventDefault()} className="max-w-md w-11/12 sm:w-8/12 md:w-6/12 lg:w-3/12 absolute p-6 sm:p-14 bg-black bg-opacity-80 my-20 mx-auto text-white right-0 left-0 rounded-lg shadow-lg">

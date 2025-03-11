@@ -4,12 +4,16 @@ import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '../utils/userSlice'
-import { LOGO } from '../utils/constants'
+import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants'
+import { toggleGptSearchView } from '../utils/gptSlice'
+import { changeLanguage } from '../utils/configSlice'
+
 
 const Header = () => {
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user=useSelector(store=>store.user)
+  const showGptSearch = useSelector((store)=>store.gpt.showGptSearch)
   const handleSignOut=()=>{
     signOut(auth).then(() => {
      
@@ -38,18 +42,48 @@ const Header = () => {
     });
     return()=> unsubscribe();
   },[])
+
+  const handleGptSearchClick =  () => {
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageaChange=(e)=>{
+    dispatch(changeLanguage(e.target.value))
+  };
   return (
     <div className='absolute w-full px-4 sm:px-8 py-2 bg-gradient-to-b from-black z-10 justify-between flex'>
       <img className='w-28 sm:w-36 md:w-44' src={LOGO} alt="logo"
 />
-{user&&<div className='flex p-4 gap-3 '>
-  <img className='w-11 ' alt='user icon' src='
+{user&&(
+  <div className='flex p-4 gap-3  '>
+    {showGptSearch&&(
+      <select className='p-3 m-2 bg-gray-800 text-white rounded-sm'
+    onChange={handleLanguageaChange}>
+      {SUPPORTED_LANGUAGES.map((lang)=>(
+      <option 
+      key={lang.identifier} 
+      value={lang.identifier}
+      >
+        {lang.name}
+      </option>
+       )
+      )}
 
-https://occ-0-3195-3663.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABZumJ3wvSKM7od-r3UjhVF9j3yteWlQYA-51F3SNoI682llhul1Xf_CUkMnfP_17Md2lpOOhbwHeGufvo8kOTjptoS_bcwtniHKz.png?r=e6e'/>
+    </select>)}
+  <button 
+  className='py-2 px-4 mx-4 my-2 bg-purple-600 text-white rounded-sm'
+  onClick={handleGptSearchClick}>
+    {showGptSearch?"Home Page" :"GPT Search"}
+  </button>
+  <img className='w-11 ' alt='user icon' src='
+https://occ-0-3195-3663.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABZumJ3wvSKM7od-r3UjhVF9j3yteWlQYA-51F3SNoI682llhul1Xf_CUkMnfP_17Md2lpOOhbwHeGufvo8kOTjptoS_bcwtniHKz.png?r=e6e'
+/>
+
 <button onClick={handleSignOut} className='font-bold text-white'>Sign Out</button>
-</div>}
+
+</div>)}
 </div>
   )
 }
 
-export default Header
+export default Header;
