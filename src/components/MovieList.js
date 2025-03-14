@@ -15,8 +15,8 @@ if (!movies) {
     element.scrollLeft-=screenWidth-110
   }
   return (
-    <div className='p-6'>
-        <h1 className='text-3xl py-2 text-white'>{title}</h1>
+    <div className='md:p-6 p-2'>
+        <h1 className='md:text-3xl text-sm py-2 text-white'>{title}</h1>
         <HiArrowSmLeft className='hidden md:block text-white text-[30px] absolute mx-8 cursor-pointer mt-[150px] '
       onClick={()=>sliderLeft(elementRef.current)}/>
       <HiArrowNarrowRight className='hidden md:block text-white text-[30px] cursor-pointer absolute mx-8 mt-[150px] right-0' 

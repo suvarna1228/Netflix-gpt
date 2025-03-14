@@ -31,7 +31,7 @@ const Header = () => {
           uid:uid,
           email:email,
           displayName:displayName,
-          photoURL:photoURL
+          photoURL:photoURL,
         }));
       navigate("/browse");
 
@@ -41,7 +41,7 @@ const Header = () => {
       }
     });
     return()=> unsubscribe();
-  },[])
+  },[]);
 
   const handleGptSearchClick =  () => {
     dispatch(toggleGptSearchView());
@@ -51,13 +51,13 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value))
   };
   return (
-    <div className='absolute w-full px-4 sm:px-8 py-2 bg-gradient-to-b from-black z-10 justify-between flex'>
-      <img className='w-28 sm:w-36 md:w-44' src={LOGO} alt="logo"
+    <div className='absolute w-full px-4 sm:px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between items-center'>
+      <img className='w-28 mx-auto md:mx-0  md:w-44' src={LOGO} alt="logo"
 />
 {user&&(
-  <div className='flex p-4 gap-3  '>
+  <div className='flex p-4 gap-3 justify-between '>
     {showGptSearch&&(
-      <select className='p-3 m-2 bg-gray-800 text-white rounded-sm'
+      <select className='md:p-3 m-2 p-2 bg-gray-800 text-white rounded-sm'
     onChange={handleLanguageaChange}>
       {SUPPORTED_LANGUAGES.map((lang)=>(
       <option 
@@ -75,7 +75,7 @@ const Header = () => {
   onClick={handleGptSearchClick}>
     {showGptSearch?"Home Page" :"GPT Search"}
   </button>
-  <img className='w-11 ' alt='user icon' src='
+  <img className='w-11 hidden md:block ' alt='user icon' src='
 https://occ-0-3195-3663.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABZumJ3wvSKM7od-r3UjhVF9j3yteWlQYA-51F3SNoI682llhul1Xf_CUkMnfP_17Md2lpOOhbwHeGufvo8kOTjptoS_bcwtniHKz.png?r=e6e'
 />
 

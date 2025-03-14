@@ -86,9 +86,9 @@ const Login = () => {
        setIsSignInForm(!isSignInForm);
   };
   return (
-  <div className="relative min-h-screen bg-black">
+  <div className="">
     <Header/>
-    <div className="absolute inset-0">
+    <div className="absolute">
     <img 
     className="w-full h-full object-cover"
     src={BG_URL} alt='bg'/>
